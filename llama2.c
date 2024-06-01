@@ -1,17 +1,7 @@
 /*
-PLEASE WRITE DOWN NAME AND UID BELOW BEFORE SUBMISSION
-* NAME: Kevin Indrayana Istimur
-* UID : 3035918701
-
 Please download the model and tokenizer to the same folder:
 $ wget -O model.bin https://huggingface.co/huangs0/llama2.c/resolve/main/model.bin
 $ wget -O tokenizer.bin https://huggingface.co/huangs0/llama2.c/resolve/main/tokenizer.bin
-
-In compile, remember to add `-pthred` to link library:
-$ gcc -o template template.c utilities.c -O2 -pthread -lm
-
-Then Run with:
-$ ./parallel
 */
 
 #define _GNU_SOURCE // keep this line
@@ -22,32 +12,10 @@ $ ./parallel
 #include <sys/resource.h>
 #include "utilities.h"
 
-/**
- * ----------------------------------------------------------------------------
- * TASK - Optimize Matrix-Vector Multiplication by Multi-Threading
- *
- * Matrix-vector multiplication, used in QKV Mapping and Feed-Forward Network
- * is the most time-consuming part of GPT. Luckily, most of computation is
- * independent of each other, so we can use parallel computing for acceleration.
- *
- * Please use <pthread.h> and your favorite control method,
- * semaphore (please #include <semaphore.h>) / mutex lock + conditional variable
- *
- * A sequential version is provided below, please modify it to parallel version.
- */
-
 // YOUR CODE STARTS HERE
 #include <pthread.h>
 #include <semaphore.h>
 #include <unistd.h>
-
-// additional header file
-/************************************************************
- * Filename: llama2_3035918701.c
- * Student name and Number: Kevin Indrayana Istimur 3035918701
- * Development platform: gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04)
- * Remark: Complete all features
- *************************************************************/
 
 // global variables
 #define MAX_THREAD_NUMBER 128
